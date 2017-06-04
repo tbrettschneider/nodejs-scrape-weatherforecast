@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-webscraper",
+  "version": "1.0.0",
+  "description": "simple demo of osmosis scraping lib",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Tommy Brettschneider",
+  "license": "ISC",
+  "dependencies": {
+    "osmosis": "^1.1.4"
+  }
+}
