@@ -1,6 +1,6 @@
 const osmosis = require('osmosis');
 if (location=process.argv[2]) {
-    data = osmosis.get('www.wetter.de')
+    osmosis.get('www.wetter.de')
        .submit('form.wt-form', {'search': location})
        .set({
            temperature_max: 'span.wt-color-temperature-max',
