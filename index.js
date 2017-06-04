@@ -1,7 +1,16 @@
+"use strict";
+
 const osmosis = require('osmosis'),
       dateFormat = require('dateformat');
 
-if (location=process.argv[2]) {
+var locations = process.argv.slice(2);
+
+if (!locations.length) {
+    console.log('usage: npm start <location...>');
+    return;
+}
+
+locations.forEach(function(location) { 
     osmosis.get('www.wetter.de')
        .submit('form.wt-form', {'search': location})
        .set({
@@ -10,9 +19,8 @@ if (location=process.argv[2]) {
        })
        .data(function(result) {
 	   result.location = location;	
-       	   now = dateFormat(new Date(), 'dddd, mmmm dS, yyyy');
-	   console.log('%s - %s - Min %s / Max %s', now, result.location, result.temperature_min, result.temperature_max);
-       });	
-} else {
-    console.log('Usage: npm start <location>');
-}
+       	   var now = dateFormat(new Date(), 'dd.mm.yyyy');
+	   console.log('%s - %s - min %s / max %s',
+		now, result.location, result.temperature_min, result.temperature_max);
+       });
+});
