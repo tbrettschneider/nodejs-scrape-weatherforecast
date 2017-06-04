@@ -9,6 +9,7 @@
   "author": "Tommy Brettschneider",
   "license": "ISC",
   "dependencies": {
+    "dateformat": "^2.0.0",
     "osmosis": "^1.1.4"
   }
 }
