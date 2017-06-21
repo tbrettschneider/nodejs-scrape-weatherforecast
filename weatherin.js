@@ -8,7 +8,7 @@ const osmosis = require('osmosis'),
 var locations = process.argv.slice(2);
 
 if (!locations.length) {
-    console.log('usage: npm start <location...>');
+    console.log('usage: ./weatherin.js <location...>');
     return;
 }
 
