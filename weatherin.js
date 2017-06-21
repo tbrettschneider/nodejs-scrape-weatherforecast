@@ -17,12 +17,23 @@ locations.forEach(function(location) {
        .get(scrape_url)
        .submit('form.wt-form', {'search': location})
        .set({
-           temperature_max: 'span.wt-color-temperature-max',
-           temperature_min: 'span.wt-color-temperature-min'
+           forecasts: [
+               osmosis
+                   .find('div.forecast-item-day')
+                   .set({
+                       day: 'div.text-day',
+                       date: 'div.text-date',
+                       temperature_max: 'span.wt-color-temperature-max',
+                       temperature_min: 'span.wt-color-temperature-min'
+                   })
+           ]
        })
        .data(function(result) {
            result.location = location;
            var now = dateFormat(new Date(), 'dd.mm.yyyy');
-           console.log('%s - %s - min %s / max %s', now, result.location, result.temperature_min, result.temperature_max);
+           console.log('\nWeather in %s:\n', result.location);
+           result.forecasts.forEach(function(forecast_item) {
+               console.log('\t%s, %s - min %s / max %s', forecast_item.day, forecast_item.date, forecast_item.temperature_min, forecast_item.temperature_max);
+           });
        });
 });
