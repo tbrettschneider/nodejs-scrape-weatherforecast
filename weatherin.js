@@ -30,7 +30,6 @@ locations.forEach(function(location) {
        })
        .data(function(result) {
            result.location = location;
-           var now = dateFormat(new Date(), 'dd.mm.yyyy');
            console.log('\nWeather in %s:\n', result.location);
            result.forecasts.forEach(function(forecast_item) {
                console.log('\t%s, %s - min %s / max %s', forecast_item.day, forecast_item.date, forecast_item.temperature_min, forecast_item.temperature_max);
